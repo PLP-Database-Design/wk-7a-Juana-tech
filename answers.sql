@@ -7,7 +7,7 @@
 -- CREATE TABLE ProductDetail (
 --     OrderID INT,
 --     CustomerName VARCHAR(100),
---     Products VARCHAR(255)  -- Contains comma-separated values (violates 1NF)
+--     Products VARCHAR(255) 
 -- );
 
 -- Create OrderDetail table
@@ -33,11 +33,11 @@
 --     (102, 'Jane Smith', 'Mouse', 2),
 --     (103, 'Emily Clark', 'Phone', 1);
 
--- First create a numbers/tally table (or use an existing one)
+-- First create a tally table 
 -- CREATE TEMPORARY TABLE numbers (n INT);
 -- INSERT INTO numbers VALUES (1),(2),(3),(4),(5),(6),(7),(8),(9),(10);
 
--- Then use SUBSTRING_INDEX to split the products
+-- Use SUBSTRING_INDEX to split the products
 -- INSERT INTO OrderDetails_1NF (OrderID, CustomerName, Product)
 -- SELECT 
 --     p.OrderID,
@@ -60,7 +60,7 @@
 --     CustomerName VARCHAR(100)
 -- );
 
--- Step 2: Create OrrderItems table
+-- Create OrrderItems table
 -- CREATE TABLE OrrderItems (
 --     OrderItemID INT AUTO_INCREMENT PRIMARY KEY,
 --     OrderID INT,
@@ -69,17 +69,17 @@
 --     FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
 -- ) ENGINE=InnoDB;
 
--- Step 3: Populate Orderrs table from 1NF data
+-- Populate Orderrs table from 1NF data
 -- INSERT INTO Orderrs (OrderID, CustomerName)
 -- SELECT DISTINCT OrderID, CustomerName
 -- FROM OrderDetails_1NF;
 
--- Step 4: Populate OrrderItems table
+-- Populate OrrderItems table
 -- INSERT INTO OrrderItems (OrderID, Product, Quantity)
 -- SELECT OrderID, Product, Quantity
 -- FROM OrderDetails_1NF;
 
--- Optional: Add index for better performance
+-- Add index for better performance
 -- CREATE INDEX idx_orderritems_orderid ON OrderItems(OrderID);
 
 -- Check the structure of OrderDetails_1NF
@@ -99,7 +99,7 @@
 --      CustomerName VARCHAR(100)
 --  );
 
--- Step 2: Create OrrderItems table
+-- Create OrrderItems table
 -- CREATE TABLE OrrderItems (
 --     OrderItemID INT AUTO_INCREMENT PRIMARY KEY,
 --      OrderID INT,
@@ -108,17 +108,17 @@
 --      FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
 --  ) ENGINE=InnoDB;
 
--- Step 3: Populate Orderrs table from 1NF data
+-- Populate Orderrs table from 1NF data
 --  INSERT INTO Orderrs (OrderID, CustomerName)
 --  SELECT DISTINCT OrderID, CustomerName
 --  FROM OrderDetails_1NF;
 
--- Step 4: Populate OrrderItems table
+-- Populate OrrderItems table
  -- INSERT INTO OrrderItems (OrderID, Product, Quantity)
 --  SELECT OrderID, Product, Quantity
 --  FROM OrderDetails_1NF;
 
--- Optional: Add index for better performance
+-- Add index for better performance
  -- CREATE INDEX idx_orderritems_orderid ON OrderItems(OrderID);
 
 -- Verify 1NF results
